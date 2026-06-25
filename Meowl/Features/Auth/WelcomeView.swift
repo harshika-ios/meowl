@@ -77,7 +77,7 @@ struct WelcomeView: View {
                     .foregroundColor(.meowlPrimary)
                     .font(.title3)
                 Text("Meowl")
-                    .font(.custom("PlusJakartaSans-Bold", size: 24))
+                    .font(.beVietnamProBold(size: 24))
                     .foregroundColor(.meowlPrimary)
             }
             
