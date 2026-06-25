@@ -42,7 +42,7 @@ My goal is to build the go-to platform for the global pet community by combining
 ## Roadmap
 
 ### Phase 1
-- [ ] Project setup
+- [*] Project setup
 - [ ] Authentication
 - [ ] User profiles
 - [ ] Pet profiles
