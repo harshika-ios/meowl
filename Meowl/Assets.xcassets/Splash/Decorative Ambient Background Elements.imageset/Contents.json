@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Decorative Ambient Background Elements.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Decorative Ambient Background Elements@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Decorative Ambient Background Elements@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
