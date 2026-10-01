@@ -1,25 +1,32 @@
-//
-//  LoginView.swift
-//  Meowl
-//
-//  Created by Harshika Sharma on 24/06/26.
-//
-
 import SwiftUI
 
-struct LoginView: View {
+struct SignupView: View {
+    @State private var name = ""
     @State private var email = ""
     @State private var password = ""
     @State private var showConnectionNotice = false
 
+    private var canCreateAccount: Bool {
+        !name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
+        email.contains("@") && password.count >= 8
+    }
+
     var body: some View {
         AuthPage {
             AuthBrandHeader(
-                title: "Welcome back!",
-                subtitle: "Sign in to stay close to your favorite furry friends."
+                title: "Join the pack",
+                subtitle: "Create your account and meet a community that loves pets as much as you do."
             )
 
             VStack(spacing: 18) {
+                AuthTextField(
+                    title: "Your name",
+                    placeholder: "How should we call you?",
+                    icon: "person",
+                    text: $name,
+                    textContentType: .name
+                )
+
                 AuthTextField(
                     title: "Email address",
                     placeholder: "you@example.com",
@@ -30,28 +37,18 @@ struct LoginView: View {
                 )
 
                 AuthTextField(
-                    title: "Password",
-                    placeholder: "Enter your password",
+                    title: "Create a password",
+                    placeholder: "At least 8 characters",
                     icon: "lock",
                     text: $password,
-                    textContentType: .password,
+                    textContentType: .newPassword,
                     isSecure: true
                 )
 
-                HStack {
-                    Spacer()
-                    NavigationLink("Forgot password?") {
-                        ResetPasswordView()
-                    }
-                    .font(.beVietnamProSemiBold(size: 13))
-                    .foregroundColor(.meowlPrimary)
-                }
-                .padding(.top, -6)
-
                 MeowlPrimaryButton(
-                    title: "Log In",
+                    title: "Create Account",
                     showsArrow: true,
-                    isEnabled: !email.isEmpty && !password.isEmpty
+                    isEnabled: canCreateAccount
                 ) {
                     showConnectionNotice = true
                 }
@@ -59,14 +56,13 @@ struct LoginView: View {
             }
 
             AuthDivider()
-
-            AuthSocialButton(title: "Continue with Apple")
+            AuthSocialButton(title: "Sign up with Apple")
 
             HStack(spacing: 5) {
-                Text("New to Meowl?")
+                Text("Already have an account?")
                     .foregroundColor(.meowlOnSurfaceVariant)
-                NavigationLink("Create an account") {
-                    SignupView()
+                NavigationLink("Log in") {
+                    LoginView()
                 }
                 .font(.beVietnamProSemiBold(size: 14))
                 .foregroundColor(.meowlPrimary)
@@ -78,12 +74,7 @@ struct LoginView: View {
         .alert("Almost there!", isPresented: $showConnectionNotice) {
             Button("OK", role: .cancel) {}
         } message: {
-            Text("Your sign-in form is ready. Connect an authentication provider to enable account access.")
+            Text("Your sign-up form is ready. Connect an authentication provider to create accounts.")
         }
     }
 }
-
-#Preview {
-    LoginView()
-}
-

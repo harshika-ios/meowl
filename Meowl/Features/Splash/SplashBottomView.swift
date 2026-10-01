@@ -34,23 +34,7 @@ struct SplashBottomView: View {
                 .frame(width: 140, height: 6)
                 .padding(.top, 22)
                 .padding(.bottom, 18)
-
-            NavigationLink {
-                WelcomeView()
-            } label: {
-                Text("FOR EVERY PET, EVERY STORY")
-                    .font(.beVietnamProBold(size: 13))
-                    .foregroundColor(.white)
-                    .padding(.vertical, 16)
-                    .padding(.horizontal, 32)
-                    .background(Color.white.opacity(0.2))
-                    .cornerRadius(28)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 28)
-                            .stroke(Color.white.opacity(0.4), lineWidth: 1.5)
-                    )
-            }
-            .padding(.bottom, 24)
+                .padding(.bottom, 24)
         }
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct SplashView: View {
 
     @StateObject private var vm = SplashViewModel()
+    @State private var showWelcome = false
 
     var body: some View {
         GeometryReader { geo in
@@ -33,6 +34,15 @@ struct SplashView: View {
             }
             .onAppear {
                 vm.startAnimations()
+            }
+            .task {
+                try? await Task.sleep(for: .seconds(3.5))
+                guard !Task.isCancelled else { return }
+                showWelcome = true
+            }
+            .navigationDestination(isPresented: $showWelcome) {
+                WelcomeView()
+                    .navigationBarBackButtonHidden()
             }
         }
     }

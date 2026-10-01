@@ -14,8 +14,8 @@ struct WelcomeBottomView: View {
 
         VStack(spacing: 22) {
 
-            Button {
-
+            NavigationLink {
+                SignupView()
             } label: {
 
                 Text("Get Started")
@@ -27,8 +27,8 @@ struct WelcomeBottomView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 18))
             }
 
-            Button {
-
+            NavigationLink {
+                LoginView()
             } label: {
 
                 Text("Log In")
